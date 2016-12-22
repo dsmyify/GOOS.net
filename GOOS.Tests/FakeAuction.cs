@@ -3,7 +3,7 @@ using GOOS.Core;
 
 namespace GOOS.Tests
 {
-    internal class FakeAuction : IAuction
+    public class FakeAuction : IAuction
     {
         private ISniper _sniper;
 
@@ -20,6 +20,11 @@ namespace GOOS.Tests
         public void Close()
         {
             _sniper.Lost();
+        }
+
+        public void Bid(int price, string bidderId)
+        {
+            _sniper.Notified(price, 10, bidderId);
         }
     }
 }
